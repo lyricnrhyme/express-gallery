@@ -1,8 +1,9 @@
+
 const bookshelf = require('./bookshelf')
 
 const Tasks = bookshelf.Model.extend({
-  tableName: 'task',
-  idAttribute: 'task_id',
+  tableName: 'gallery',
+  idAttribute: 'gallery_id',
   hasTimestamps: true
 })
 
