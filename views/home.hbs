@@ -1,8 +1,8 @@
-<h1><a href='/products'>Products</a></h1>
+<h1>Gallery:</h1>
+{{#each post}}
+<div class="homeImage">
+    <img src="{{ link }}">
+</div>
+{{/each}}
 <br>
-<br>
-<h1><a href='/articles'>Articles</a></h1>
-<br><br>
-<br>
-<h3><a href='/settings'>SETTINGS</a></h3>
-<h3><a href='/logout'>LOGOUT</a></h3>
+<h3><a href='/gallery/new'>NEW POST</a></h3>

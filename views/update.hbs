@@ -1,22 +1,16 @@
 <head>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<h1>Edit Article:</h1>
-{{#with article}}
-<form action='/articles/{{title}}/edit?_method=PUT' method='post'>
-    <label>Title: <input type='text' name='title' value={{title}} required></label>
+<h1>Edit Post:</h1>
+{{#with post}}
+<form action='/gallery/{{ id }}/edit?_method=PUT' id="updatePost" method='post'>
+    <label>Author: <input type='text' name='author' value={{ author }} required></label>
     <br><br>
-    <label>Author: <input type='text' name='author' value={{author}} required></label>
-    <br><br>
-    <label>Description: <input type='text' name='description' value={{description}} required></label>
+    <label>Image: <input type='url' name='link' value={{ link }} required></label>
     <br><br>
     <input type='submit' value='Update'>
 </form>
+<textarea name="description" form="updatePost">{{ description }}</textarea>
 {{/with}}
 <br>
-<h3><a href='/articles'>BACK TO ARTICLES</a></h3>
-<br>
-{{> footer }}
-<br>
-<h3><a href='/settings'>SETTINGS</a></h3>
-<h3><a href='/logout'>LOGOUT</a></h3>
+<h3><a href='/'>BACK TO GALLERY</a></h3>
