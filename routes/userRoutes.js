@@ -5,7 +5,7 @@ const bp = require('body-parser');
 Router.use(bp.urlencoded({ extended: true }));
 
 // get all users
-Router.get('/api/users', (req, res) => {
+Router.get('/users', (req, res) => {
     Users
     .fetchAll()
     .then( users => {
@@ -17,7 +17,7 @@ Router.get('/api/users', (req, res) => {
   })
   
   // get all tasks by user_id
-  Router.get('/api/users/:user_id/tasks', (req, res) => {
+  Router.get('/users/:user_id/tasks', (req, res) => {
     const { user_id } = req.params;
     Tasks
       .where({user_id})
