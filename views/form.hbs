@@ -1,20 +1,14 @@
-<h1>Add New Article:</h1>
-<form action="/articles/new" method="post">
-  <label>Title:
-    <input type="text" name="title" id="">
-  </label>
-  <br><br>
+<h1>Add New Post:</h1>
+<form action="/gallery/new" id="newPost" method="post">
   <label>Author:
-    <input type="text" name="author" id="">
+    <input type="text" name="author" id="" required>
   </label>
   <br><br>
-  <label>Description:
-    <input type="text" name="description" id="">
+  <label>Image:
+    <input type="url" name="link" id="" required>
   </label>
   <br><br>
   <input type="submit" value="Submit">
 </form>
+<textarea name="description" form="newPost" placeholder=="Enter description here..."></textarea>
 <br> {{> footer}}
-<br>
-<h3><a href='/settings'>SETTINGS</a></h3>
-<h3><a href='/logout'>LOGOUT</a></h3>
