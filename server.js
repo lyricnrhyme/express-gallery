@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const PORT = process.env.EXPRESS_CONTAINER_PORT;
-const Tasks = require('./db/models/tasks.js');
+const Tasks = require('./db/models/gallery.js');
 const Users = require('./db/models/users.js');
+const userRoutes = require('./routes/userRoutes.js');
+const galleryRoutes = require('./routes/galleryRoutes.js');
 
 const app = express();
 
