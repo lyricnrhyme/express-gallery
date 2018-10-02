@@ -1,7 +1,7 @@
 <h1>Gallery:</h1>
-{{#each post}}
+{{#each gallery}}
 <div class="homeImage">
-    <img src="{{ link }}">
+    <a href='/gallery/{{ gallery_id }}'><img src="{{ link }}"></a>
 </div>
 {{/each}}
 <br>

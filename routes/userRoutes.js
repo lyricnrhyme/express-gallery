@@ -2,7 +2,7 @@ const express = require('express');
 const Router = express.Router();
 const bp = require('body-parser');
 
-Router.use(bp.urlencoded({ extended: true }));
+// Router.use(bp.urlencoded({ extended: true }));
 
 // get all users
 Router.get('/users', (req, res) => {
