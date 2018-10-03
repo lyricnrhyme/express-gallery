@@ -2,15 +2,16 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <h1>Edit Post:</h1>
-{{#with post}}
-<form action='/gallery/{{ id }}/edit?_method=PUT' id="updatePost" method='post'>
+{{#each galleryUpdate}}
+<form action='/gallery/{{ gallery_id }}?_method=PUT' id="updatePost" method='post'>
     <label>Author: <input type='text' name='author' value={{ author }} required></label>
     <br><br>
     <label>Image: <input type='url' name='link' value={{ link }} required></label>
     <br><br>
+    <textarea name="description" form="updatePost">{{ description }}</textarea>
+    <br><br>
     <input type='submit' value='Update'>
 </form>
-<textarea name="description" form="updatePost">{{ description }}</textarea>
-{{/with}}
+{{/each}}
 <br>
 <h3><a href='/'>BACK TO GALLERY</a></h3>
