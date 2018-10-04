@@ -13,7 +13,7 @@ Router.post('/logout', (req, res) => {
 
 })
 
-Router.get('protected', (req, res) => {
+Router.get('/protected', (req, res) => {
     res.send('PROTECTEDDDD');
 
 })
