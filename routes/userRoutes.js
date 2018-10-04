@@ -7,7 +7,7 @@ Router.use(bp.urlencoded({ extended: true }));
 // get all users
 Router.get('/users', (req, res) => {
     Users
-    .fetchAll()
+    .fetchAll() 
     .then( users => {
       res.json(users.serialize());
     })
@@ -44,5 +44,9 @@ Router.get('/users', (req, res) => {
           res.redirect('/')
         })    
     });
+
+    //user login
+
+    //user 
 
 module.exports = Router;

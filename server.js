@@ -6,11 +6,13 @@ const Tasks = require('./db/models/gallery.js');
 const Users = require('./db/models/users.js');
 const userRoutes = require('./routes/userRoutes.js');
 const galleryRoutes = require('./routes/galleryRoutes.js');
+const authRoutes = require('./routes/authRoutes.js');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use('/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.send('sanity check')
