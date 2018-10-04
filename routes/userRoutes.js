@@ -30,4 +30,19 @@ Router.get('/users', (req, res) => {
       })
   })
 
+    // POST new user
+    Router.post('/user/new', (req, res) => {
+      console.log('req.body', req.body);
+      const user = req.body;
+      // DS_Inv.add(item);
+      knex.raw(`INSERT INTO user (email, password, created_at, updated_at) VALUES ('${user.email}', '${user.password}', '${user.created_at}', '${user.updated_at}')`)
+        .then( result => {
+          res.redirect('/');
+        })
+        .catch( err => {
+          console.log('error', err)
+          res.redirect('/')
+        })    
+    });
+
 module.exports = Router;
