@@ -1,11 +1,11 @@
 const express = require('express');
 const Router = express.Router();
-const Users = require('../db/models/Users.js')
+const Users = require('../db/models/users.js')
 
 Router.post('/register', (req, res) => {
-    const {email, password} = req.body;
+    const {user_id, email, password} = req.body;
         Users
-            .forge({email, password})
+            .forge({user_id, email, password})
             .save()
             .then( result => {
                 if (result){
