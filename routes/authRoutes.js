@@ -22,7 +22,21 @@ Router.post('/register', (req, res) => {
     })
 
 Router.post('/login', (req, res) => {
-
+     const { email, password } = req.body;
+     Users
+        .where({ email })
+        .fetch()
+        .then( user => {
+            if (password === user.attributes.password) {
+            res.send('HA YOU WIN!! YOU IN!')
+            } else {
+                res.send('USER ID AND/OR PASSWORD NO MATCH!!')
+            }
+        })
+        .catch( err => {
+            console.log('err', err)
+            res.send(err)
+        })
 })
 
 Router.post('/logout', (req, res) => {
