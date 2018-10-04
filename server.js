@@ -3,6 +3,7 @@ const app = express();
 const bp = require('body-parser');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
+const authRoutes = require('./routes/authRoutes.js');
 
 const PORT = process.env.EXPRESS_CONTAINER_PORT;
 
@@ -24,6 +25,7 @@ const galleryRoutes = require('./routes/galleryRoutes.js');
 
 app.use('/', userRoutes);
 app.use('/', galleryRoutes);
+app.use('/', authRoutes);
 
 app.get('/', (req, res) => {
   res.render('home');
