@@ -30,7 +30,7 @@ app.use(session({
 
 app.use('/', userRoutes);
 app.use('/', galleryRoutes);
-app.use('/auth', authRoutes);
+app.use('/', authRoutes);
 
 app.get('/', (req, res) => {
   res.render('home');
