@@ -2,7 +2,7 @@ const express = require('express');
 const Router = express.Router();
 const Users = require('../db/models/users.js')
 
-Router.post('/register', (req, res) => {
+Router.post('/auth/register', (req, res) => {
     const {user_id, email, password} = req.body;
         Users
             .forge({user_id, email, password})
@@ -47,7 +47,7 @@ Router.post('/auth/login', (req, res) => {
     })
 })
 
-Router.post('/logout', (req, res) => {
+Router.post('/auth/logout', (req, res) => {
     console.log('LOGGED OUT')
     req.session.destroy();
     res.redirect('/login');
