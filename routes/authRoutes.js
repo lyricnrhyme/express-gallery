@@ -22,13 +22,17 @@ Router.post('/register', (req, res) => {
             })
     })
 
-Router.get('/login', (req, res) => {
+// Router.get('/login', (req, res) => {
+// })
+
+Router.post('/login', (req, res) => {
     const { email, password } = req.body;
     Users
     .where({ email })
     .fetch()
     .then( user => {
         if (password === user.attributes.password) {
+            console.log('LOGGED IN')
             req.session.isLoggedIn = true;
             res.redirect('/')
         } else {
@@ -41,11 +45,8 @@ Router.get('/login', (req, res) => {
     })
 })
 
-Router.post('/login', (req, res) => {
-
-})
-
 Router.post('/logout', (req, res) => {
+    console.log('LOGGED OUT')
     req.session.destroy();
     res.redirect('/login');
 })
