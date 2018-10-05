@@ -10,6 +10,7 @@ Router.post('/register', (req, res) => {
             .then( result => {
                 if (result){
                     //save user data into DB
+                    console.log('WELCOME')
                 }
                 else{
                     res.send('YOU FUKKED UP')
@@ -21,15 +22,40 @@ Router.post('/register', (req, res) => {
             })
     })
 
+Router.get('/login', (req, res) => {
+    const { email, password } = req.body;
+    Users
+    .where({ email })
+    .fetch()
+    .then( user => {
+        if (password === user.attributes.password) {
+            req.session.isLoggedIn = true;
+            res.redirect('/')
+        } else {
+            res.redirect('/login')
+        }
+    })
+    .catch( err => {
+        console.log('err', err)
+        res.send(err);
+    })
+})
+
 Router.post('/login', (req, res) => {
 
 })
 
 Router.post('/logout', (req, res) => {
-
+    req.session.destroy();
+    res.redirect('/login');
 })
 
 Router.get('/protected', (req, res) => {
+    if (req.session.isLoggedIn) {
+        //can access
+    } else {
+        //no can access
+    }
     res.send('PROTECTEDDDD');
 
 })

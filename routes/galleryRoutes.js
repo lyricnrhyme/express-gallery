@@ -3,6 +3,12 @@ const Router = express.Router();
 const Gallery = require('../db/models/gallery.js');
 
 Router.get('/', (req, res) => {
+    console.log('req.session', req.session);
+    if (!req.session.viewCount) {
+        req.session.viewCount = 1
+    } else {
+        req.session.viewCount++;
+    }
     Gallery
     .fetchAll()
     .then( gallery => {

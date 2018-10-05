@@ -6,6 +6,8 @@ const methodOverride = require('method-override');
 const authRoutes = require('./routes/authRoutes.js');
 
 const PORT = process.env.EXPRESS_CONTAINER_PORT;
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 
 
 app.use(bp.json());
@@ -19,13 +21,16 @@ app.engine('.hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 const userRoutes = require('./routes/userRoutes.js');
 const galleryRoutes = require('./routes/galleryRoutes.js');
 
-// app.get('/', (req, res) => {
-//   res.send('sanity check')
-// })
+app.use(session({
+  store: new RedisStore({url: 'redis://redis:6379', logErrors: true}),
+  secret: 'xpgal',
+  resave: false,
+  saveUninitialized: true
+}))
 
 app.use('/', userRoutes);
 app.use('/', galleryRoutes);
-app.use('/', authRoutes);
+app.use('/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.render('home');
