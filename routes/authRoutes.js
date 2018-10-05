@@ -7,12 +7,13 @@ const bcrypt = require('bcrypt');
 //6:25
 
 passport.serializeUser( (user, done) => {
-    console.log('serial')
+    console.log('serial', user)
     done(null, user.id)
 })
 
 passport.deserializeUser( (user, done) => {
-
+    console.log('deserializing', user)
+    done(null, user)
 })
 
 passport.use(new LocalStrategy({usernameField: 'email'}, (username, password, done) => {
